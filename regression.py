@@ -46,7 +46,7 @@ def objective(trial):
     return r2_score
 
 study = optuna.create_study(direction='maximize')
-study.optimize(objective, n_trials=1000)
+study.optimize(objective, n_trials=1500)
 
 # Optimization receipt
 print("--- Optimization Results ---")
