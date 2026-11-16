@@ -43,6 +43,8 @@ for plate_num in plates:
     plt.title(f"Normalized Cumulative Release Profiles of PVA Beads\nin Blood versus Mucus Environments ({ratios[plate_num]} of PVA:Na-Alginate)")
     plt.xticks(np.arange(0, 95, 5))
     plt.yticks(np.arange(0, max(max(ncr_p1b.iloc[3]), max(ncr_p1m.iloc[3]))*21/20, max(max(ncr_p1b.iloc[3]), max(ncr_p1m.iloc[3]))/20))
+    plt.xlabel("Release Time (min)")
+    plt.ylabel("Normalized Cumulative Release (au)")
     plt.legend()
     plt.grid()
     plt.show()
