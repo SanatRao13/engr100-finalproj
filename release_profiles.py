@@ -37,11 +37,12 @@ for plate_num in plates:
     cr_p1m = plate1_mucus.astype(float).cumsum(axis=1)
     ncr_p1m = cr_p1m.div(cr_p1m.max(axis=1), axis=0)
 
-    times = [10*x for x in range(len(cr_p1b.columns))]
-    plt.plot(times, ncr_p1b.iloc[3].T, 'ro-', label=f'Plate {plate_num}, Blood Sim')
-    plt.plot(times, ncr_p1m.iloc[3].T, 'yo-', label=f'Plate {plate_num}, Mucus Sim')
+    times = [0,10]
+    times.extend([5*x+15 for x in range(len(cr_p1b.columns)-2)])
+    plt.plot(times, ncr_p1b.iloc[3].T, 'ro-', label=f'Plate {ratios[plate_num]}, Blood Sim')
+    plt.plot(times, ncr_p1m.iloc[3].T, 'yo-', label=f'Plate {ratios[plate_num]}, Mucus Sim')
     plt.title(f"Normalized Cumulative Release Profiles of PVA Beads\nin Blood versus Mucus Environments ({ratios[plate_num]} of PVA:Na-Alginate)")
-    plt.xticks(np.arange(0, 95, 5))
+    plt.xticks(np.arange(0, max(times)+5, 5))
     plt.yticks(np.arange(0, max(max(ncr_p1b.iloc[3]), max(ncr_p1m.iloc[3]))*21/20, max(max(ncr_p1b.iloc[3]), max(ncr_p1m.iloc[3]))/20))
     plt.xlabel("Release Time (min)")
     plt.ylabel("Normalized Cumulative Release (au)")
